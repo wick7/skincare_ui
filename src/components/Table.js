@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import Pagination from '@material-ui/lab/Pagination';
 
 const useRowStyles = makeStyles({
     root: {
@@ -86,7 +87,13 @@ function Row(data) {
     );
 }
 
-export default function CollapsibleTable(data) {
+export default function CollapsibleTable({ data, count, page, setPageNumber }) {
+    let roundedCount = count / 10
+
+    const handlePagination = (e, v) => {
+        setPageNumber(v)
+    }
+
     return (
         <TableContainer component={Paper}>
             <Table aria-label="collapsible table">
@@ -102,13 +109,14 @@ export default function CollapsibleTable(data) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {data.data &&
-                        data.data.map((item) => (
+                    {data &&
+                        data.map((item) => (
                             <Row key={item.id} data={item} />
                         ))
                     }
                 </TableBody>
             </Table>
+            <Pagination count={roundedCount.toFixed()} variant="outlined" color="primary" page={page} onChange={handlePagination} />
         </TableContainer>
     );
 }

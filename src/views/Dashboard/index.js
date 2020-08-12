@@ -5,19 +5,21 @@ import axios from 'axios'
 
 const Dashboard = () => {
     const [data, setData] = useState();
+    const [page, setPageNumber] = useState(1);
+    const [count, setCount] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios('http://localhost:3001/api?search=&page=1'
-            );
+            const result = await axios(`http://localhost:3001/api?search=&page=${parseInt(page)}`);
 
-            setData(result.data);
+            setData(result.data.results);
+            setCount(result.data.count)
         };
 
         fetchData();
-    }, []);
+    }, [page]);
 
-    return (<Table data={data}></Table>)
+    return (<Table data={data} count={count} page={page} setPageNumber={setPageNumber} ></Table>)
 }
 
 export default Dashboard
