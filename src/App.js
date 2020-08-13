@@ -13,7 +13,9 @@ const SideBar = styled(Flex)`
     background: #f0f0f0;
 `
 
-const Con = styled.div``
+const Container = styled(Flex)`
+    height: 100%;
+`
 
 const routes = [
     {
@@ -31,7 +33,7 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div style={{ display: "flex" }}>
+                <Container>
                     <SideBar centerVertically column>
                         <h3>Skin Tracker</h3>
                         <ul style={{ listStyleType: "none", padding: 10 }}>
@@ -64,7 +66,7 @@ class App extends Component {
                             ))}
                         </Switch>
                     </div>
-                </div>
+                </Container>
             </Router>
         );
     }
