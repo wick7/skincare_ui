@@ -17,7 +17,6 @@ const Dashboard = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log(`http://localhost:3001/api?search=${search}&page=${parseInt(page)}`)
             const result = await axios(`http://localhost:3001/api?search=${search}&page=${parseInt(page)}`);
 
             setData(result.data.results);
