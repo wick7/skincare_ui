@@ -26,10 +26,10 @@ const Dashboard = () => {
 
         fetchData();
     }, [page, search]);
-    console.log("@@@@", search)
+
     return (
         <Container>
-            <Search data={data} search={search} setSearch={setSearch} />
+            <Search data={data} search={search} setSearch={setSearch} setPageNumber={setPageNumber} />
             <Table data={data} count={count} page={page} setPageNumber={setPageNumber}></Table>
         </Container>
     )
