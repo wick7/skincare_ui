@@ -37,7 +37,7 @@ function Row(data) {
         <React.Fragment>
             <TableRow className={classes.root}>
                 <TableCell>
-                    <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+                    <IconButton aria-label="expand row" size="medium" onClick={() => setOpen(!open)}>
                         {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                     </IconButton>
                 </TableCell>
@@ -95,7 +95,7 @@ export default function CollapsibleTable({ data, count, page, setPageNumber }) {
 
     return (
         <TableContainer component={Paper}>
-            <Table aria-label="collapsible table">
+            <Table aria-label="collapsible table" size={'small'} style={{ width: '100%' }}>
                 <TableHead>
                     <TableRow>
                         <TableCell />
