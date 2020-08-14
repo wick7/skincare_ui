@@ -4,17 +4,26 @@ import Flex from './components/Flex'
 
 //Views
 import Dashboard from './views/Dashboard'
+import Form from './views/Form'
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-const SideBar = styled(Flex)`
-    height: 100vh;
-    width: 20%;
-    background: #f0f0f0;
-`
-
 const Container = styled(Flex)`
-    height: 100%;
+  background: gray;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+`
+const SideBar = styled(Flex)` 
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f0f0f0;
+  overflow-x: hidden;
+  padding-top: 20px;
 `
 
 const routes = [
@@ -25,7 +34,7 @@ const routes = [
     },
     {
         path: "/new/item",
-        main: () => <h2>Add New Item</h2>,
+        main: () => <Form />,
     },
 ];
 
@@ -33,7 +42,7 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <Container>
+                <div>
                     <SideBar centerVertically column>
                         <h3>Skin Tracker</h3>
                         <ul style={{ listStyleType: "none", padding: 10 }}>
@@ -54,19 +63,17 @@ class App extends Component {
                             ))}
                         </Switch>
                     </SideBar>
-                    <div style={{ flex: 1 }}>
-                        <Switch>
-                            {routes.map((route, index) => (
-                                <Route
-                                    key={index}
-                                    path={route.path}
-                                    exact={route.exact}
-                                    children={<route.main />}
-                                />
-                            ))}
-                        </Switch>
-                    </div>
-                </Container>
+                    <Switch>
+                        {routes.map((route, index) => (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                exact={route.exact}
+                                children={<route.main />}
+                            />
+                        ))}
+                    </Switch>
+                </div>
             </Router>
         );
     }

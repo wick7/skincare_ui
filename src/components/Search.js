@@ -3,9 +3,13 @@ import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete, { createFilterOptions } from '@material-ui/lab/Autocomplete';
 import deBounce from './deBounce'
+import styled from "styled-components";
+
+const Container = styled.div`
+    margin: 20px 0;
+`
+
 const filter = createFilterOptions();
-
-
 
 export default function FreeSoloCreateOption({ data, setSearch, setPageNumber }) {
 
@@ -35,7 +39,7 @@ export default function FreeSoloCreateOption({ data, setSearch, setPageNumber })
         }
     }
     return (
-        <div>
+        <Container>
             <Autocomplete
                 value={value}
                 onChange={handleChange}
@@ -78,6 +82,6 @@ export default function FreeSoloCreateOption({ data, setSearch, setPageNumber })
                     <TextField {...params} label="Search by product name" variant="outlined" />
                 )}
             />
-        </div>
+        </Container>
     );
 }

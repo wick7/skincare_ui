@@ -3,10 +3,11 @@ import Table from '../../components/Table'
 import Search from '../../components/Search'
 import styled from 'styled-components'
 import axios from 'axios'
+import Flex from '../../components/Flex'
 
 const Container = styled.div`
-    padding-top: 5px;
-    heigth: 100vh;
+    margin: 0 0 10px 20%;
+    padding: 0px 10px;
 `
 
 const Dashboard = () => {
